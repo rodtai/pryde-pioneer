@@ -1,5 +1,4 @@
 import React from 'react';
-import RNPickerSelect from 'react-native-picker-select';
 import {Text, StyleSheet, View} from 'react-native';
 import Video from 'react-native-video';
 import BetterTextInput from '../components/BetterTextInput';
@@ -51,27 +50,49 @@ export default function(props) {
         />
         <BetterDropdown
           label={'Gender'}
+          items={[
+            {label: 'Male', value: 'male'},
+            {label: 'Female', value: 'female'},
+            {label: 'Other', value: 'other'},
+            {label: 'Prefer not to answer', value: 'prefer not to answer'}
+          ]}
           onClick={showPicker}
-        />
-        <RNPickerSelect
-            onValueChange={(value) => console.log(value)}
-            items={[
-                { label: 'Football', value: 'football' },
-                { label: 'Baseball', value: 'baseball' },
-                { label: 'Hockey', value: 'hockey' },
-            ]}
         />
         <BetterDropdown
           label={'Grade'}
+          items={[
+            {label: '6th grade', value: 6},
+            {label: '7th grade', value: 7},
+            {label: '8th grade', value: 8},
+            {label: '9th grade', value: 9},
+            {label: '10th grade', value: 10},
+            {label: '11th grade', value: 11},
+            {label: '12th grade', value: 12},
+          ]}
         />
         <BetterDropdown
           label={'Race/Ethnicity'}
+          items={[
+            {label: 'White/European American', value: 'White/European American'},
+            {label: 'Black/African American', value: 'Black/African American'},
+            {label: 'North American Indian', value: 'North American Indian'},
+            {label: 'Asian American', value: 'Asian American'},
+            {label: 'Other racial group', value: 'Other racial group'}
+          ]}
         />
         <BetterDropdown
           label={'Hispanic/Latino?'}
+          items={[
+            {label: 'Yes', value: true},
+            {label: 'No', value: false}
+          ]}
         />
         <BetterDropdown
           label={'4-H Participant?'}
+          items={[
+            {label: 'Yes', value: true},
+            {label: 'No', value: false}
+          ]}
         />
         <View style={styles.nextButton}>
             <BetterButton
@@ -117,7 +138,7 @@ const styles = StyleSheet.create({
     height: 51,
     backgroundColor: '#4aade9',
     opacity: 0.7,
-    color: '#ffffff',
+    color: '#000000',
     fontFamily: 'WorkSans-Regular',
     fontStyle: 'normal',
     fontWeight: 'normal',
