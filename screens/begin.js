@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     margin: 30,
   },
   text: {
-    // fontFamily: 'WorkSans-Regular',
+    fontFamily: 'WorkSans-Regular',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 25,

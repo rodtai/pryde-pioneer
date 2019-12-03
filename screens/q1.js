@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     margin: 30,
   },
   text: {
-    // fontFamily: 'WorkSans-Regular',
+    fontFamily: 'WorkSans-Regular',
     fontStyle: 'normal',
     fontWeight: 'bold',
     fontSize: 25,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     height: screenHeight * 0.65,
     padding: 10,
     color: '#ffffff',
-    // fontFamily: 'WorkSans-Regular',
+    fontFamily: 'WorkSans-Regular',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 20,

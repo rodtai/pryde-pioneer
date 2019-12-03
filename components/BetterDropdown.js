@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
   placeholderStyle: {
     color: '#ffffff',
-    // fontFamily: 'WorkSans-Regular',
+    fontFamily: 'WorkSans-Regular',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 20,

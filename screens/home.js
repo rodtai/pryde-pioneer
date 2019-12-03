@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   prydeText: {
-    // fontFamily: 'WorkSans-Regular',
+    fontFamily: 'WorkSans-Regular',
     fontSize: 30,
     fontStyle: 'normal',
     fontWeight: 'bold',
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     letterSpacing: 5,
   },
   pioneerText: {
-    // fontFamily: 'WorkSans-Regular',
+    fontFamily: 'WorkSans-Regular',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 40,
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   submitText: {
-    // fontFamily: 'WorkSans-Regular',
+    fontFamily: 'WorkSans-Regular',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 20,

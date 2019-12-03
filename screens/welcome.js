@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     margin: 30,
   },
   mainText: {
-    // fontFamily: 'WorkSans-Regular',
+    fontFamily: 'WorkSans-Regular',
     fontSize: 40,
     fontStyle: 'normal',
     fontWeight: 'bold',
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   subText: {
-    // fontFamily: 'WorkSans-Regular',
+    fontFamily: 'WorkSans-Regular',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 25,

@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     margin: 30,
   },
   text: {
-    // fontFamily: 'WorkSans-Regular',
+    fontFamily: 'WorkSans-Regular',
     fontStyle: 'normal',
     fontWeight: 'bold',
     fontSize: 30,
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#4aade9',
     opacity: 0.7,
     color: '#ffffff',
-    // fontFamily: 'WorkSans-Regular',
+    fontFamily: 'WorkSans-Regular',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 20,
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   placeholder: {
     paddingLeft: 30,
     borderColor: '#ffffff',
-    // fontFamily: 'WorkSans-Regular',
+    fontFamily: 'WorkSans-Regular',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 20,
