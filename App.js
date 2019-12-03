@@ -1,114 +1,40 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import { createStackNavigator } from 'react-navigation-stack';
+import WelcomeScreen from './screens/welcome';
+import HomeScreen from './screens/home';
+import NewUserScreen from './screens/newuser';
+import BeginScreen from './screens/begin';
+import Q1Screen from './screens/q1';
+import Q2Screen from './screens/q2';
+import EndScreen from './screens/end';
+import { createAppContainer } from 'react-navigation';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const App = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+const App = createStackNavigator({
+  Welcome: {
+    screen: WelcomeScreen,
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  Home: {
+    screen: HomeScreen,
   },
-  body: {
-    backgroundColor: Colors.white,
+  NewUser: {
+    screen: NewUserScreen,
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  Begin: {
+    screen: BeginScreen,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
+  Q1: {
+    screen: Q1Screen,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
+  Q2: {
+    screen: Q2Screen,
   },
-  highlight: {
-    fontWeight: '700',
+  End: {
+    screen: EndScreen,
   },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
+},
+{
+  mode: 'modal',
+  headerMode: 'none',
 });
 
-export default App;
+export default createAppContainer(App);
