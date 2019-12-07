@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions, Text, StyleSheet, View, KeyboardAvoidingView} from 'react-native';
+import {Dimensions, Text, StyleSheet, View,  Keyboard, TouchableWithoutFeedback} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Video from 'react-native-video';
 import {QUESTION_2} from '../constants';
@@ -9,40 +9,53 @@ import { TextInput } from 'react-native-gesture-handler';
 
 export default function(props) {
   const {navigate} = props.navigation;
-  const [answer2, setAnswer2] = React.useState('');
+  const question = QUESTION_2;
+  const [answer, setAnswer] = React.useState('');
+  const onFinish = () => {
+    var q1 = props.navigation.getParam('question1', '');
+    var a1 = props.navigation.getParam('answer1', '');
+    navigate('End', { 
+      question1: q1, 
+      answer1: a1, 
+      question2: question, 
+      answer2: answer 
+    });
+  };
   return (
-    <View style={styles.container}>
-        <Video
-            source={require('../videos/q2.mp4')}
-            rate={1.0}
-            volume={1.0}
-            muted={false}
-            resizeMode={'cover'}
-            repeat
-            style={styles.video}
-        />
-        <View style={styles.content}>
-            <BackButton onClick={() => navigate('Q1')} />
-            <Text style={styles.text}>{QUESTION_2}</Text>
-            <KeyboardAwareScrollView
-              resetScrollToCoords={{ x: 0, y: 0 }}
-              scrollEnabled={false}
-            >
-              <TextInput
-                  placeholder={'Enter text here...'}
-                  placeholderTextColor={'#ffffff'}
-                  onChange={(e) => setAnswer2(e.nativeEvent.text)}
-                  value={answer2}
-                  style={styles.responseTextbox}
-                  multiline={true}
-              />
-              <View style={ {height: 120}} />
-            </KeyboardAwareScrollView>
-            <View style={styles.nextButton}>
-                <BetterButton buttonWidth={119} label={'NEXT'} onClick={() => navigate('End')} />
-            </View>
-        </View>
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={styles.container}>
+          <Video
+              source={require('../videos/q2.mp4')}
+              rate={1.0}
+              volume={1.0}
+              muted={false}
+              resizeMode={'cover'}
+              repeat
+              style={styles.video}
+          />
+          <View style={styles.content}>
+              <BackButton onClick={() => navigate('Q1')} />
+              <Text style={styles.text}>{question}</Text>
+              <KeyboardAwareScrollView
+                resetScrollToCoords={{ x: 0, y: 0 }}
+                scrollEnabled={false}
+              >
+                <TextInput
+                    placeholder={'Enter text here...'}
+                    placeholderTextColor={'#ffffff'}
+                    onChange={(e) => setAnswer(e.nativeEvent.text)}
+                    value={answer}
+                    style={styles.responseTextbox}
+                    multiline={true}
+                />
+                <View style={ {height: 120}} />
+              </KeyboardAwareScrollView>
+              <View style={styles.nextButton}>
+                  <BetterButton buttonWidth={119} label={'NEXT'} onClick={onFinish} />
+              </View>
+          </View>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 const screenHeight = Math.round(Dimensions.get('window').height);

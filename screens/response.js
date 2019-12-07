@@ -6,31 +6,20 @@ import BetterButton from '../components/BetterButton';
 import { TextInput } from 'react-native-gesture-handler';
 
 export default function(props) {
-  const {navigate} = props.navigation;
-  const question = QUESTION_1;
-  const [answer, setAnswer] = React.useState('');
+  const question1 = props.navigation.getParam('question1', '');
+  const answer1 = props.navigation.getParam('answer1', '');
+  const question2 = props.navigation.getParam('question2', '');
+  const answer2 = props.navigation.getParam('answer2', '');
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
-          <ImageBackground style={styles.backgroundImg} source={require('../images/q1.png')}>
-              <View style={styles.content}>
-                  <BackButton onClick={() => navigate('Begin')} />
-                  <Text style={styles.text}>{question}</Text>
-                  <TextInput
-                      placeholder={'Enter text here...'}
-                      placeholderTextColor={'#ffffff'}
-                      onChange={(e) => setAnswer(e.nativeEvent.text)}
-                      value={answer}
-                      style={styles.responseTextbox}
-                      multiline={true}
-                  />
-                  <View style={styles.nextButton}>
-                      <BetterButton buttonWidth={119} label={'NEXT'} onClick={() => navigate('Q2', { question1: question, answer1: answer})} />
-                  </View>
-              </View>
-          </ImageBackground>
+            <View style={styles.content}>
+                <Text style={styles.text}>Response</Text>
+                <Text style={styles.regularText}>{question1}</Text>
+                <Text style={styles.regularText}>{answer1}</Text>
+                <Text style={styles.regularText}>{question2}</Text>
+                <Text style={styles.regularText}>{answer2}</Text>
+            </View>
       </View>
-    </TouchableWithoutFeedback>  
   );
 }
 const screenHeight = Math.round(Dimensions.get('window').height);
@@ -38,6 +27,7 @@ const screenWidth = Math.round(Dimensions.get('window').width);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'orange',
   },
   video: {
     position: 'absolute',
@@ -56,6 +46,13 @@ const styles = StyleSheet.create({
     fontFamily: 'WorkSans-Regular',
     fontStyle: 'normal',
     fontWeight: 'bold',
+    fontSize: 25,
+    lineHeight: 40,
+    color: '#ffffff',
+  },
+  regularText: {
+    fontFamily: 'WorkSans-Regular',
+    fontStyle: 'normal',
     fontSize: 25,
     lineHeight: 40,
     color: '#ffffff',

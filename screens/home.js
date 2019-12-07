@@ -27,10 +27,7 @@ export default function(props) {
         </View>
         <BetterButton onClick={() => navigate('NewUser')} label={'NEW USER'}/>
         <BetterButton onClick={() => navigate('Begin')} label={'BEGIN'} />
-        <TouchableHighlight
-          style={styles.submit}>
-          <Text style={styles.submitText}>PAST ENTRIES</Text>
-        </TouchableHighlight>
+        <BetterButton onClick={() => navigate('PastEntries')} label={'PAST ENTRIES'} />
       </View>
     </View>
   );

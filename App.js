@@ -7,6 +7,9 @@ import BeginScreen from './screens/begin';
 import Q1Screen from './screens/q1';
 import Q2Screen from './screens/q2';
 import EndScreen from './screens/end';
+import FourHScreen from './screens/4h';
+import PastEntriesScreen from './screens/past_entries';
+import ResponseScreen from './screens/response';
 import { createAppContainer } from 'react-navigation';
 
 const App = createStackNavigator({
@@ -30,6 +33,15 @@ const App = createStackNavigator({
   },
   End: {
     screen: EndScreen,
+  },
+  FourH: {
+    screen: FourHScreen,
+  },
+  PastEntries: {
+    screen: PastEntriesScreen,
+  },
+  Response: {
+    screen: ResponseScreen,
   },
 },
 {

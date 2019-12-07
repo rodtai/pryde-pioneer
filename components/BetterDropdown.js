@@ -2,9 +2,8 @@ import React from 'react';
 import RNPickerSelect from 'react-native-picker-select';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Text, StyleSheet, View} from 'react-native';
-import { TouchableHighlight } from 'react-native-gesture-handler';
 
-export default function BetterDropdown({ label, items, onClick }) {
+export default function BetterDropdown({ label, items, onValueChange }) {
   return (
       <View>
         <RNPickerSelect
@@ -25,7 +24,7 @@ export default function BetterDropdown({ label, items, onClick }) {
                 paddingLeft: 30,
               },
             }}
-            onValueChange={(value) => console.log(value)}
+            onValueChange={onValueChange}
             placeholder={{ label: label, value: ''}}
             items={items}
             Icon={() => {

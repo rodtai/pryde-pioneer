@@ -1,3 +1,4 @@
+//TEXT BLURBS
 export const WELCOME_TITLE = `Welcome to Pioneer`;
 export const WELCOME_BLURB = `Pioneer is an interactive ` +
 `activity in which you will be asked a few questions ` +
@@ -13,3 +14,9 @@ export const QUESTION_1 = `What is your purpose in life?`;
 export const QUESTION_2 = `How will working towards your ` +
 `purpose help other people or help the world?`;
 export const END_BLURB = `Great job Pioneer! You have arrived!`;
+export const FOURH_Q1 = 'What country is your 4-H program located in?';
+export const FOURH_Q2 = 'What type of 4-H program are you partcipating in? (Please describe briefly.)';
+
+//STORAGE KEYS
+export const USER_INFO_STORAGE_KEY = '@USER_INFO_STORAGE_KEY';
+export const USER_RESPONSE_STORAGE_KEY = '@USER_RESPONSE_STORAGE_KEY'
