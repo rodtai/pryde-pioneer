@@ -48,5 +48,5 @@ const App = createStackNavigator({
   mode: 'modal',
   headerMode: 'none',
 });
-
+console.disableYellowBox = true;
 export default createAppContainer(App);

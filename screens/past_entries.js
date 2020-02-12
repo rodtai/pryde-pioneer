@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions, Text, StyleSheet, View} from 'react-native';
+import {Dimensions, Text, StyleSheet, View, Linking} from 'react-native';
 import Video from 'react-native-video';
 import BackButton from '../components/BackButton';
 import {USER_RESPONSE_STORAGE_KEY} from '../constants';
@@ -9,12 +9,11 @@ export default function(props) {
   const {navigate} = props.navigation;
   const [responses, setResponses] = React.useState([]);
   const pushResponseScreen = (response) => () => {
-    console.log(response);
     navigate('Response', {
-      question1: response.question1,
-      answer1: response.answer1,
-      question2: response.question2,
-      answer2: response.answer2,
+      question1: response.question_1,
+      answer1: response.answer_1,
+      question2: response.question_2,
+      answer2: response.answer_2,
     });
   }
   const getDateLabel = (response) => {
@@ -26,11 +25,10 @@ export default function(props) {
       return '';
     }
   }
-
+  const exportToCSV = () => Linking.openURL('mailto:?subject=My Pioneer Archive&body=Your past entries in the Pioneer App are attached to this email.');
   React.useEffect(() => {
     AsyncStorage.getItem(USER_RESPONSE_STORAGE_KEY).then(r => {
       if(r != null){
-        console.log(r);
         var response_arr = JSON.parse(r).responses;
         setResponses(response_arr);
       }
@@ -51,12 +49,19 @@ export default function(props) {
       <View style={styles.content}>
         <View style={styles.header}> 
             <BackButton onClick={() => navigate('Home')} />
-            <Text style={styles.text}>{"PAST ENTRIES"}</Text>
+            <Text style={styles.text}>{"Past Entries"}</Text>
         </View>
         <View>
           {
-            responses.map(r => <BetterButton onClick={pushResponseScreen(r)} label={getDateLabel(r)} buttonWidth={screenWidth*0.8} />)
+            responses.map((r, i) => <BetterButton key={i} onClick={pushResponseScreen(r)} label={getDateLabel(r)} buttonWidth={screenWidth*0.8} />)
           }
+        </View>
+        <View>
+          <BetterButton 
+            onClick={exportToCSV}
+            label={'Export to CSV'}
+            buttonWidth={130}
+          />
         </View>
       </View>
     </View>
@@ -77,7 +82,7 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'space-evenly',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     margin: 30,
   },

@@ -5,12 +5,26 @@ import BetterTextInput from '../components/BetterTextInput';
 import BetterDropdown from '../components/BetterDropdown';
 import BetterButton from '../components/BetterButton';
 import BackButton from '../components/BackButton';
-import {FOURH_Q1, FOURH_Q2} from '../constants';
+import {FOURH_Q1, FOURH_Q2, USER_INFO_STORAGE_KEY} from '../constants';
+import AsyncStorage from '@react-native-community/async-storage';
 export default function(props) {
   const {navigate} = props.navigation;
-  const [id, onChangeId] = React.useState('');
-  const [age, onChangeAge] = React.useState('');
-
+  const [country, onChangeCountry] = React.useState('');
+  const [programType, onChangeProgramType] = React.useState('');
+  const submit = async () => {
+    const user_info = {
+      country: country,
+      programType: programType
+    };
+    const user_info_exists = await AsyncStorage.getItem(USER_INFO_STORAGE_KEY);
+    if(user_info_exists){
+      await AsyncStorage.mergeItem(USER_INFO_STORAGE_KEY, JSON.stringify(user_info));
+    }
+    else {
+      await AsyncStorage.setItem(USER_INFO_STORAGE_KEY, JSON.stringify(user_info));
+    }
+    navigate('Begin', { isControl: props.navigation.getParam('isControl', false) });
+  }
   return (
     <View style={styles.container}>
       <Video
@@ -25,12 +39,12 @@ export default function(props) {
       <View style={styles.content}>
         <View style={styles.header}> 
             <BackButton onClick={() => navigate('Home')} />
-            <Text style={styles.text}>{FOURH_Q1}</Text>
         </View>
+        <Text style={styles.text}>{FOURH_Q1}</Text>
         <BetterTextInput
           style={styles.textInput}
-          onChangeText={onChangeId}
-          value={id}
+          onChangeText={onChangeCountry}
+          value={country}
           placeholder={'Enter text here...'}
           placeholderTextColor={'#ffffff'}
           placeholderStyle={styles.placeholder}
@@ -38,12 +52,19 @@ export default function(props) {
         <Text style={styles.text}>{FOURH_Q2}</Text>
         <BetterTextInput
           style={styles.textInput}
-          onChangeText={onChangeAge}
-          value={age}
+          onChangeText={onChangeProgramType}
+          value={programType}
           placeholder={'Enter text here...'}
           placeholderTextColor={'#ffffff'}
           placeholderStyle={styles.placeholder}
         />
+        <View style={styles.nextButton}>
+              <BetterButton
+                  onClick={submit}
+                  label={'SUBMIT'}
+                  buttonWidth={119}
+              />
+          </View>
       </View>
     </View>
   );

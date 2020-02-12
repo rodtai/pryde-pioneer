@@ -10,13 +10,18 @@ export const BEGIN_SCREEN_DIRECTIONS = `In Pioneer,` +
 ` to different people, and that’s okay. Think about` + 
 ` what you most want to accomplish in life, and write` + 
 ` about whatever purpose means to you!`;
+export const CONTROL_QUESTION_1 = `Please describe the last`+
+` movie you've seen. What was the title? What was it about?`;
+export const CONTROL_QUESTION_2 = `What was your favorite or`+
+` least favorite part of the movie?`;
 export const QUESTION_1 = `What is your purpose in life?`;
 export const QUESTION_2 = `How will working towards your ` +
 `purpose help other people or help the world?`;
 export const END_BLURB = `Great job Pioneer! You have arrived!`;
-export const FOURH_Q1 = 'What country is your 4-H program located in?';
-export const FOURH_Q2 = 'What type of 4-H program are you partcipating in? (Please describe briefly.)';
+export const FOURH_Q1 = `What county is your 4-H program located in?`;
+export const FOURH_Q2 = `What type of 4-H program are you partcipating` + 
+` in? (Please describe briefly.) `;
 
 //STORAGE KEYS
-export const USER_INFO_STORAGE_KEY = '@USER_INFO_STORAGE_KEY';
-export const USER_RESPONSE_STORAGE_KEY = '@USER_RESPONSE_STORAGE_KEY'
+export const USER_INFO_STORAGE_KEY = `@USER_INFO_STORAGE_KEY`;
+export const USER_RESPONSE_STORAGE_KEY = `@USER_RESPONSE_STORAGE_KEY`;

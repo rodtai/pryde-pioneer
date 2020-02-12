@@ -6,6 +6,10 @@ import BetterButton from '../components/BetterButton';
 
 export default function(props) {
   const {navigate} = props.navigation;
+  const isControl = props.navigation.getParam('isControl', false);
+  const onNext = () => {
+    navigate('Q1', { isControl: isControl });
+  }
   return (
     <View style={styles.container}>
         <ImageBackground style={styles.backgroundImg} source={require('../images/begin.png')}>
@@ -13,7 +17,7 @@ export default function(props) {
                 <BackButton onClick={() => navigate('Home')} />
                 <Text style={styles.text}>{BEGIN_SCREEN_DIRECTIONS}</Text>
                 <View style={styles.nextButton}>
-                    <BetterButton buttonWidth={119} label={'BEGIN'} onClick={() => navigate('Q1')} />
+                    <BetterButton buttonWidth={119} label={'BEGIN'} onClick={onNext} />
                 </View>
             </View>
         </ImageBackground>

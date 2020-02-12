@@ -19,7 +19,7 @@ export default function(props) {
 
   const submit = async () => {
     const user_info = {
-      id: id,
+      username: id,
       age: age,
       gender: gender,
       grade: grade,
@@ -34,7 +34,7 @@ export default function(props) {
     else {
       await AsyncStorage.setItem(USER_INFO_STORAGE_KEY, JSON.stringify(user_info));
     }
-    navigate(is4HMember ? 'FourH' : 'Begin');
+    navigate(is4HMember ? 'FourH' : 'Begin', { isControl: id.toLocaleLowerCase().startsWith('c')});
   }
 
   return (
@@ -64,6 +64,7 @@ export default function(props) {
             placeholderStyle={styles.placeholder}
           />
           <BetterTextInput
+            keyboardType='numeric'
             style={styles.textInput}
             onChangeText={onChangeAge}
             value={age}
@@ -124,7 +125,7 @@ export default function(props) {
           <View style={styles.nextButton}>
               <BetterButton
                   onClick={submit}
-                  label={'SUBMIT'}
+                  label={is4HMember ? 'NEXT' : 'SUBMIT'}
                   buttonWidth={119}
               />
           </View>

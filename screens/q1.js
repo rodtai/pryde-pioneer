@@ -1,17 +1,41 @@
 import React from 'react';
 import {Dimensions, Text, StyleSheet, ImageBackground, View, Keyboard, TouchableWithoutFeedback} from 'react-native';
-import {QUESTION_1} from '../constants';
+import {QUESTION_1, CONTROL_QUESTION_1} from '../constants';
 import BackButton from '../components/BackButton';
 import BetterButton from '../components/BetterButton';
 import { TextInput } from 'react-native-gesture-handler';
+import Video from 'react-native-video';
 
 export default function(props) {
   const {navigate} = props.navigation;
-  const question = QUESTION_1;
   const [answer, setAnswer] = React.useState('');
+  const [minTimeElapsed, setMinTimeElapsed] = React.useState(false);
+  const isControl = props.navigation.getParam('isControl', false);
+  const onNext = () => {
+    navigate('Q2', { 
+      question1: question, 
+      answer1: answer,
+      isControl: isControl 
+    });
+  }
+
+  const question = isControl ? CONTROL_QUESTION_1 : QUESTION_1;
+  setTimeout(setMinTimeElapsed, 30 * 1000, true);
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
+          <Video 
+            source={require('../audio/panel1.wav')}
+            style={{ width: 0, height: 0}}
+            muted={false}
+            repeat={false}
+            resizeMode={"cover"}
+            volume={1.0}
+            rate={1.0}
+            ignoreSilentSwitch={"ignore"}
+            playWhenInactive={true}
+            playInBackground={true}
+          />
           <ImageBackground style={styles.backgroundImg} source={require('../images/q1.png')}>
               <View style={styles.content}>
                   <BackButton onClick={() => navigate('Begin')} />
@@ -25,13 +49,16 @@ export default function(props) {
                       multiline={true}
                   />
                   <View style={styles.nextButton}>
-                      <BetterButton buttonWidth={119} label={'NEXT'} onClick={() => navigate('Q2', { question1: question, answer1: answer})} />
+                      <BetterButton disabled={answer.length <= 100 && !minTimeElapsed} buttonWidth={119} label={'NEXT'} onClick={onNext} />
                   </View>
               </View>
           </ImageBackground>
       </View>
     </TouchableWithoutFeedback>  
   );
+}
+const audio_options = {
+  source:{local: require('../audio/panel1.wav')}
 }
 const screenHeight = Math.round(Dimensions.get('window').height);
 const screenWidth = Math.round(Dimensions.get('window').width);

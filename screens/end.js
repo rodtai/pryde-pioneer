@@ -1,23 +1,28 @@
 import React from 'react';
 import {Dimensions, Text, StyleSheet, View} from 'react-native';
 import Video from 'react-native-video';
-import {END_BLURB} from '../constants';
+import {END_BLURB, USER_INFO_STORAGE_KEY} from '../constants';
 import BackButton from '../components/BackButton';
 import BetterButton from '../components/BetterButton';
 import {USER_RESPONSE_STORAGE_KEY} from '../constants';
 import AsyncStorage from '@react-native-community/async-storage';
+import { sendResponse } from '../networking';
 
 export default function(props) {
   const {navigate} = props.navigation;
   const onFinish = async () => {
     var response = {
-      question1: props.navigation.getParam('question1', ''),
-      answer1: props.navigation.getParam('answer1', ''),
-      question2: props.navigation.getParam('question2', ''),
-      answer2: props.navigation.getParam('answer2', ''),
+      question_1: props.navigation.getParam('question1', ''),
+      answer_1: props.navigation.getParam('answer1', ''),
+      question_2: props.navigation.getParam('question2', ''),
+      answer_2: props.navigation.getParam('answer2', ''),
       timestamp: Date.now(),
     };
     const response_info_exists = await AsyncStorage.getItem(USER_RESPONSE_STORAGE_KEY);
+    const user_info_exists = await AsyncStorage.getItem(USER_INFO_STORAGE_KEY);
+    const user = user_info_exists ? JSON.parse(user_info_exists) : {};
+    var sent = sendResponse(user, response);
+    response = { ...response, sent: sent };
     if(response_info_exists != null){
       var prev_responses_arr = JSON.parse(response_info_exists).responses;
       prev_responses_arr.push(response);
@@ -40,11 +45,13 @@ export default function(props) {
             repeat
             style={styles.video}
         />
-        <View style={styles.content} >
+        <View style={styles.content1} >
             <BackButton onClick={() => navigate('Q2')} />
             <Text style={styles.text}>{END_BLURB}</Text>
+        </View>
+        <View style={styles.content2}>
             <View style={styles.nextButton}>
-                <BetterButton buttonWidth={119} label={'HOME'} onClick={onFinish} />
+              <BetterButton buttonWidth={119} label={'HOME'} onClick={onFinish} />
             </View>
         </View>
     </View>
@@ -63,9 +70,15 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
   },
-  content: {
+  content1: {
     flex: 1,
-    justifyContent: 'space-evenly',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    margin: 30,
+  },
+  content2: {
+    flex: 1,
+    justifyContent: 'flex-end',
     alignItems: 'stretch',
     margin: 30,
   },
