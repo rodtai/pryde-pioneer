@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions, Text, StyleSheet, View, Linking} from 'react-native';
+import {Dimensions, Text, StyleSheet, View, Linking, ScrollView} from 'react-native';
 import Video from 'react-native-video';
 import BackButton from '../components/BackButton';
 import {USER_RESPONSE_STORAGE_KEY} from '../constants';
@@ -51,11 +51,11 @@ export default function(props) {
             <BackButton onClick={() => navigate('Home')} />
             <Text style={styles.text}>{"Past Entries"}</Text>
         </View>
-        <View>
+        <ScrollView>
           {
             responses.map((r, i) => <BetterButton key={i} onClick={pushResponseScreen(r)} label={getDateLabel(r)} buttonWidth={screenWidth*0.8} />)
           }
-        </View>
+        </ScrollView>
         <View>
           <BetterButton 
             onClick={exportToCSV}

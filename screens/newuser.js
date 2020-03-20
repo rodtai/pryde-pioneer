@@ -156,8 +156,7 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'WorkSans-Regular',
     fontStyle: 'normal',
-    fontWeight: 'bold',
-    fontSize: 30,
+    fontSize: 25,
     lineHeight: 35,
     letterSpacing: 0.5,
     color: '#ffffff',

@@ -1,16 +1,18 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
-import WelcomeScreen from './screens/welcome';
-import HomeScreen from './screens/home';
-import NewUserScreen from './screens/newuser';
-import BeginScreen from './screens/begin';
-import Q1Screen from './screens/q1';
-import Q2Screen from './screens/q2';
-import EndScreen from './screens/end';
-import FourHScreen from './screens/4h';
-import PastEntriesScreen from './screens/past_entries';
-import ResponseScreen from './screens/response';
 import { createAppContainer } from 'react-navigation';
+
+// Import scenes
+import WelcomeScreen from './screens/welcome/welcome.js';
+import HomeScreen from './screens/home.js';
+import NewUserScreen from './screens/newuser.js';
+import BeginScreen from './screens/begin.js';
+import Q1Screen from './screens/q1.js';
+import Q2Screen from './screens/q2.js';
+import EndScreen from './screens/end.js';
+import FourHScreen from './screens/4h/4h.js';
+import PastEntriesScreen from './screens/past_entries.js';
+import ResponseScreen from './screens/response.js';
 
 const App = createStackNavigator({
   Welcome: {

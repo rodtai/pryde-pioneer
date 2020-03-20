@@ -1,6 +1,6 @@
 export async function sendResponse(user, response) {
     try {
-        let res = await fetch('https://pryde-pioneer.herokuapp.com/response', {
+        let res = await fetch('http://0.0.0.0:5000/response', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -11,6 +11,7 @@ export async function sendResponse(user, response) {
                 ...response
             })
         });
+        console.log(user)
         let parsedRes = await res.json();
         console.log(parsedRes);
         return parsedRes.data != null;

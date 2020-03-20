@@ -28,7 +28,7 @@ export default function(props) {
             source={require('../audio/panel1.wav')}
             style={{ width: 0, height: 0}}
             muted={false}
-            repeat={false}
+            repeat
             resizeMode={"cover"}
             volume={1.0}
             rate={1.0}
@@ -38,16 +38,18 @@ export default function(props) {
           />
           <ImageBackground style={styles.backgroundImg} source={require('../images/q1.png')}>
               <View style={styles.content}>
-                  <BackButton onClick={() => navigate('Begin')} />
-                  <Text style={styles.text}>{question}</Text>
-                  <TextInput
-                      placeholder={'Enter text here...'}
-                      placeholderTextColor={'#ffffff'}
-                      onChange={(e) => setAnswer(e.nativeEvent.text)}
-                      value={answer}
-                      style={styles.responseTextbox}
-                      multiline={true}
-                  />
+                  <View style={styles.responseview}>
+                    <BackButton onClick={() => navigate('Begin')} />
+                    <Text style={styles.text}>{question}</Text>
+                    <TextInput
+                        placeholder={'Enter text here...'}
+                        placeholderTextColor={'#ffffff'}
+                        onChange={(e) => setAnswer(e.nativeEvent.text)}
+                        value={answer}
+                        style={styles.responseTextbox}
+                        multiline={true}
+                    />
+                  </View>
                   <View style={styles.nextButton}>
                       <BetterButton disabled={answer.length <= 100 && !minTimeElapsed} buttonWidth={119} label={'NEXT'} onClick={onNext} />
                   </View>
@@ -75,9 +77,12 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
     alignItems: 'stretch',
     margin: 30,
+  },
+  responseview: {
+    justifyContent: 'space-around'
   },
   text: {
     fontFamily: 'WorkSans-Regular',
@@ -100,7 +105,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#ffffff',
     borderRadius: 10,
-    height: screenHeight * 0.65,
+    height: screenHeight * 0.35,
     padding: 10,
     color: '#ffffff',
     fontFamily: 'WorkSans-Regular',

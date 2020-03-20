@@ -5,13 +5,7 @@ import {Text, StyleSheet, View} from 'react-native';
 
 export default function BetterDropdown({ label, items, onValueChange }) {
   return (
-      <View style={{ 
-          borderWidth: 2,
-          borderStyle: 'solid',
-          borderColor: '#FFFAFA',
-          borderRadius: 10,
-          overflow: "hidden",
-        }}>
+      <View>
         <RNPickerSelect
             style={{
               ...pickerStyles,

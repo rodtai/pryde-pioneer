@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
     alignItems: 'stretch',
     margin: 30,
   },
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     lineHeight: 40,
     color: '#ffffff',
+    margin: 10
   },
   backgroundImg: {
       flex: 1,
