@@ -1,12 +1,11 @@
 import React from 'react';
-import {Text, StyleSheet, View, Keyboard, TouchableWithoutFeedback} from 'react-native';
-import BetterTextInput from '../../components/BetterTextInput.js';
-import BetterDropdown from '../../components/BetterDropdown';
-import BetterButton from '../../components/BetterButton';
-import BackButton from '../../components/BackButton';
-import {FOURH_Q1, FOURH_Q2, USER_INFO_STORAGE_KEY} from '../../constants';
+import { Text, View, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { TextBox, BackButton, Media, Button } from 'pioneer/components';
+import {FOURH_Q1, FOURH_Q2, USER_INFO_STORAGE_KEY} from 'pioneer/constants';
 import AsyncStorage from '@react-native-community/async-storage';
-import Video from '../../components/video/video';
+
+import styles from './4h-styles.js';
+
 export default function(props) {
   const {navigate} = props.navigation;
   const [country, onChangeCountry] = React.useState('');
@@ -23,18 +22,18 @@ export default function(props) {
     else {
       await AsyncStorage.setItem(USER_INFO_STORAGE_KEY, JSON.stringify(user_info));
     }
-    navigate('Begin', { isControl: props.navigation.getParam('isControl', false) });
+    navigate('Begin', { isControl: props.route.params?.isControl ?? false });
   }
   return (
     <View style={styles.container}>
-      <Video filename={require('../../videos/info.mp4')} />
+      <Media filename={require('pioneer/videos/info.mp4')} />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.content}>
             <View style={styles.header}> 
                 <BackButton onClick={() => navigate('Home')} />
             </View>
             <Text style={styles.text}>{FOURH_Q1}</Text>
-            <BetterTextInput
+            <TextBox
               style={styles.textInput}
               onChangeText={onChangeCountry}
               value={country}
@@ -43,7 +42,7 @@ export default function(props) {
               placeholderStyle={styles.placeholder}
             />
             <Text style={styles.text}>{FOURH_Q2}</Text>
-            <BetterTextInput
+            <TextBox
               style={styles.textInput}
               onChangeText={onChangeProgramType}
               value={programType}
@@ -52,83 +51,14 @@ export default function(props) {
               placeholderStyle={styles.placeholder}
             />
             <View style={styles.nextButton}>
-                  <BetterButton
+                  <Button
                       onClick={submit}
                       label={'SUBMIT'}
                       buttonWidth={119}
                   />
-              </View>
+            </View>
           </View>
       </TouchableWithoutFeedback>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  video: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-  },
-  content: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    margin: 30,
-  },
-  text: {
-    alignSelf: 'flex-start',
-    fontFamily: 'WorkSans-Regular',
-    fontStyle: 'normal',
-    fontSize: 20,
-    lineHeight: 35,
-    letterSpacing: 0.5,
-    color: '#000000',
-    margin: 10
-  },
-  textInput: {
-    width: 325,
-    height: 51,
-    backgroundColor: '#4aade9',
-    opacity: 0.7,
-    color: '#000000',
-    fontFamily: 'WorkSans-Regular',
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: 20,
-    lineHeight: 23,
-    letterSpacing: 1,
-    borderWidth: 2,
-    borderStyle: 'solid',
-    borderColor: '#ff8c00',
-    borderRadius: 10,
-    paddingLeft: 30,
-    margin: 10,
-  },
-  placeholder: {
-    paddingLeft: 30,
-    borderColor: '#ffffff',
-    fontFamily: 'WorkSans-Regular',
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: 20,
-    lineHeight: 23,
-    letterSpacing: 1,
-  },
-  header: {
-    marginTop: 10,
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
-  nextButton: {
-    alignSelf: 'flex-end',
-  },
-});
