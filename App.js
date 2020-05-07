@@ -43,6 +43,7 @@ function App() {
   );
 }
 
+console.disableYellowBox = true;
 export default App;
 
 // const App = createStackNavigator({
@@ -81,5 +82,4 @@ export default App;
 //   mode: 'modal',
 //   headerMode: 'none',
 // });
-// console.disableYellowBox = true;
 // export default createAppContainer(App);

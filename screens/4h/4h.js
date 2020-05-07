@@ -32,24 +32,27 @@ export default function(props) {
             <View style={styles.header}> 
                 <BackButton onClick={() => navigate('Home')} />
             </View>
-            <Text style={styles.text}>{FOURH_Q1}</Text>
-            <TextBox
-              style={styles.textInput}
-              onChangeText={onChangeCountry}
-              value={country}
-              placeholder={'Enter text here...'}
-              placeholderTextColor={'#ffffff'}
-              placeholderStyle={styles.placeholder}
-            />
-            <Text style={styles.text}>{FOURH_Q2}</Text>
-            <TextBox
-              style={styles.textInput}
-              onChangeText={onChangeProgramType}
-              value={programType}
-              placeholder={'Enter text here...'}
-              placeholderTextColor={'#ffffff'}
-              placeholderStyle={styles.placeholder}
-            />
+            <View>
+              <Text style={styles.text}>{FOURH_Q1}</Text>
+              <TextBox
+                style={styles.textInput}
+                onChangeText={onChangeCountry}
+                value={country}
+                placeholder={'Enter text here...'}
+                placeholderTextColor={'#D3D3D3'}
+                placeholderStyle={styles.placeholder}
+              />
+
+              <Text style={styles.text}>{FOURH_Q2}</Text>
+              <TextBox
+                style={styles.textInput}
+                onChangeText={onChangeProgramType}
+                value={programType}
+                placeholder={'Enter text here...'}
+                placeholderTextColor={'#D3D3D3'}
+                placeholderStyle={styles.placeholder}
+              />
+            </View>
             <View style={styles.nextButton}>
                   <Button
                       onClick={submit}

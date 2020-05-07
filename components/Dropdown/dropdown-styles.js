@@ -4,7 +4,7 @@ export const pickerStyles = StyleSheet.create({
         width: 325,
         height: 51,
 
-        color: '#000000',
+        color: '#FFFFFF',
         fontFamily: 'WorkSans-Regular',
         fontStyle: 'normal',
         fontWeight: 'normal',
@@ -24,7 +24,7 @@ export const pickerStyles = StyleSheet.create({
         width: 325,
         height: 51,
 
-        color: '#000000',
+        color: '#FFFFFF',
         fontFamily: 'WorkSans-Regular',
         fontStyle: 'normal',
         fontWeight: 'normal',
@@ -45,6 +45,7 @@ export const pickerStyles = StyleSheet.create({
 export const styles = StyleSheet.create({
     down: {
         color: '#FFFFFF',
+        paddingTop: 10,
         paddingRight: 10,
     },
     iconContainer: {
@@ -53,7 +54,7 @@ export const styles = StyleSheet.create({
     },
     useNativeAndroidPickerStyle: false,
     placeholder: {
-        color: '#ffffff',
+        color: '#FFFFFF',
         fontFamily: 'WorkSans-Regular',
         fontStyle: 'normal',
         fontWeight: 'normal',

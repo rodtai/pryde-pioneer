@@ -50,7 +50,7 @@ export default function(props) {
             onChangeText={onChangeId}
             value={id}
             placeholder={'ID#'}
-            placeholderTextColor={'#ffffff'}
+            placeholderTextColor={'#D3D3D3'}
             placeholderStyle={styles.placeholder}
           />
           <TextBox
@@ -59,7 +59,7 @@ export default function(props) {
             onChangeText={onChangeAge}
             value={age}
             placeholder={'Age'}
-            placeholderTextColor={'#ffffff'}
+            placeholderTextColor={'#D3D3D3'}
             placeholderStyle={styles.placeholder}
           />
           <Dropdown

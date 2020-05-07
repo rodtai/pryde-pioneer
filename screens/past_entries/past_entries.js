@@ -1,4 +1,6 @@
 import React from 'react';
+import { FileSystem } from 'react-native-unimodules';
+import * as MailComposer from 'expo-mail-composer';
 import { Text, View, Linking, ScrollView, Dimensions } from 'react-native';
 import { BackButton, Button, Media } from '../../components';
 import { USER_RESPONSE_STORAGE_KEY } from '../../constants';
@@ -27,16 +29,53 @@ export default function(props) {
     }
   }
   
-  const exportToCSV = () => Linking.openURL('mailto:?subject=My Pioneer Archive&body=Your past entries in the Pioneer App are attached to this email.');
+  const exportToCSV = () => {
+    MailComposer.composeAsync({
+      recipients: [],
+      subject: 'My Pioneer Archive',
+      body: 'Your past entries in the Pioneer App are attached to this email.',
+      attachments: [
+        FileSystem.cacheDirectory+'responses.csv'
+      ]
+    })
+  }
+
+  const removeLineBreaks = (words) => {
+    return words.toString().replace(/[\r\n]/g, ' ');
+  };
+
+  const jsonArrayToCSV = (jsonArray) => {
+    var csvString = '';
+    if(jsonArray.length >= 1){
+      var headers = Object.keys(jsonArray[0]).join('|');
+      csvString += headers + '\n';
+    }
+    for(var i = 0; i < jsonArray.length; i++){
+      var keys = Object.keys(jsonArray[i]); 
+      var vals = keys.map(k => removeLineBreaks(jsonArray[i][k]));
+      var row = vals.join('|');
+      csvString += row + '\n';
+    }
+    return csvString;
+  }
 
   React.useEffect(() => {
     AsyncStorage.getItem(USER_RESPONSE_STORAGE_KEY).then(r => {
+      var response_arr = [];
       if(r != null){
-        var response_arr = JSON.parse(r).responses;
+        response_arr = JSON.parse(r).responses;
         setResponses(response_arr);
       }
-      const fileContents = 'a,b,c,d\na,b,c,d\n';
-      console.log('file is written');
+      var fileURI = FileSystem.cacheDirectory+'responses.csv';
+      var content = jsonArrayToCSV(response_arr);
+      console.log(content);
+      FileSystem.writeAsStringAsync(fileURI, content, {
+        encoding: 'utf8'
+      }).then((_) => {
+        console.log("Success");
+      }, (err) => {
+        console.log(err);
+      })
     });
   }, []);
 

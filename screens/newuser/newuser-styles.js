@@ -30,7 +30,7 @@ export default styles = StyleSheet.create({
       height: 51,
       backgroundColor: '#4aade9',
       opacity: 0.7,
-      color: '#000000',
+      color: '#FFFFFF',
       fontFamily: 'WorkSans-Regular',
       fontStyle: 'normal',
       fontWeight: 'normal',
@@ -45,7 +45,7 @@ export default styles = StyleSheet.create({
     },
     placeholder: {
       paddingLeft: 30,
-      borderColor: '#ffffff',
+      borderColor: '#FFFFFF',
       fontFamily: 'WorkSans-Regular',
       fontStyle: 'normal',
       fontWeight: 'normal',

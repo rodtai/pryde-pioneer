@@ -53,4 +53,16 @@ export default StyleSheet.create({
     lineHeight: 23,
     letterSpacing: 0.5,    
   },
+  content1: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    margin: 30,
+  },
+  content2: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'stretch',
+    margin: 30,
+  },
 });
