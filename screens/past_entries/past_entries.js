@@ -33,7 +33,7 @@ export default function(props) {
     MailComposer.composeAsync({
       recipients: [],
       subject: 'My Pioneer Archive',
-      body: 'Your past entries in the Pioneer App are attached to this email.',
+      body: 'Your past entries in the Pioneer App are attached to this email. When importing in some other program like Excel, make sure to use pipe delimiters.',
       attachments: [
         FileSystem.cacheDirectory+'responses.csv'
       ]
