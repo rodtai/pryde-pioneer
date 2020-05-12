@@ -1,9 +1,9 @@
 import React from 'react';
 import { FileSystem } from 'react-native-unimodules';
 import * as MailComposer from 'expo-mail-composer';
-import { Text, View, Linking, ScrollView, Dimensions } from 'react-native';
+import { Text, View, ScrollView, Dimensions } from 'react-native';
 import { BackButton, Button, Media } from '../../components';
-import { USER_RESPONSE_STORAGE_KEY } from '../../constants';
+import { USER_RESPONSE_STORAGE_KEY, EMAIL_SUBJECT, EMAIL_BODY } from '../../constants';
 import AsyncStorage from '@react-native-community/async-storage';
 import styles from './past_entries-styles.js';
 
@@ -32,8 +32,8 @@ export default function(props) {
   const exportToCSV = () => {
     MailComposer.composeAsync({
       recipients: [],
-      subject: 'My Pioneer Archive',
-      body: 'Your past entries in the Pioneer App are attached to this email. When importing in some other program like Excel, make sure to use pipe delimiters.',
+      subject: EMAIL_SUBJECT,
+      body: EMAIL_BODY,
       attachments: [
         FileSystem.cacheDirectory+'responses.csv'
       ]
