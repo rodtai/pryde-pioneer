@@ -13,6 +13,7 @@ export function Dropdown({ label, items, onValueChange }) {
             onValueChange={onValueChange}
             placeholder={{ label: label, value: ''}}
             items={items}
+            useNativeAndroidPickerStyle={false}
             Icon={() => {
               return <Icon style={styles.down} name={"angle-down"} size={30} color={"#900"} />;
             }}

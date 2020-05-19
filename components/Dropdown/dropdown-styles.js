@@ -52,7 +52,7 @@ export const styles = StyleSheet.create({
         top: 10,
         right: 12,
     },
-    useNativeAndroidPickerStyle: false,
+    useNativeAndroidPickerStyle: true,
     placeholder: {
         color: '#FFFFFF',
         fontFamily: 'WorkSans-Regular',
