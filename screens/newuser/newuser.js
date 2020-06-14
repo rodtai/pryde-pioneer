@@ -23,7 +23,9 @@ export default function(props) {
       grade: grade,
       race: race,
       isHispanic: isHispanic,
-      is4HMember: is4HMember
+      is4HMember: is4HMember,
+      country: 'N/A',
+      programType: 'N/A'
     };
     const user_info_exists = await AsyncStorage.getItem(USER_INFO_STORAGE_KEY);
     if(user_info_exists){

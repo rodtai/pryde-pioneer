@@ -1,6 +1,7 @@
+// pryde url: pryde-pioneer.herokuapp.com
 export async function sendResponse(user, response) {
     try {
-        let res = await fetch('http://0.0.0.0:5000/response', {
+        let res = await fetch('http://pioneer-pryde.herokuapp.com/response', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -11,9 +12,7 @@ export async function sendResponse(user, response) {
                 ...response
             })
         });
-        console.log(user)
         let parsedRes = await res.json();
-        console.log(parsedRes);
         return parsedRes.data != null;
     }
     catch (error) {

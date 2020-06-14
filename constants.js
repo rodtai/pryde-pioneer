@@ -35,8 +35,10 @@ export const FOURH_Q2 = `What type of 4-H program are you partcipating` +
 // email text
 export const EMAIL_SUBJECT = 'My Pioneer Archive';
 export const EMAIL_BODY = 'Your past entries in the Pioneer App are' +
-' attached to this email. When importing in some other program like' +
-' Excel, make sure to use pipe delimiters.';
+' attached to this email. To view in Excel, make sure to select the' +
+' "delimited" file type when importing the data. In the Excel pop up' +
+' box, select "Other" for the delimiter setting and type in the pipe' +
+' symbol "I" from your keyboard to complete importing.';
 
 //STORAGE KEYS
 export const USER_INFO_STORAGE_KEY = `@USER_INFO_STORAGE_KEY`;
