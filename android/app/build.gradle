@@ -188,7 +188,13 @@ android {
     }
 }
 
+apply from: "../../node_modules/react-native-unimodules/gradle.groovy"
+
 dependencies {
+    addUnimodulesDependencies([
+            modulesPaths: ["../../node_modules"]
+    ])
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
