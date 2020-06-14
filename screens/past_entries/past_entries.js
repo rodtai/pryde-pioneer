@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileSystem } from 'react-native-unimodules';
+import * as FileSystem from 'expo-file-system';
 import * as MailComposer from 'expo-mail-composer';
 import { Text, View, ScrollView, Dimensions } from 'react-native';
 import { BackButton, Button, Media } from '../../components';
