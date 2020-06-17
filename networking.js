@@ -1,7 +1,7 @@
 // pryde url: pryde-pioneer.herokuapp.com
 export async function sendResponse(user, response) {
     try {
-        let res = await fetch('http://pioneer-pryde.herokuapp.com/response', {
+        let res = await fetch('https://pioneer-pryde.herokuapp.com/response', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
